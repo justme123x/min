@@ -1,12 +1,19 @@
 <?php
 namespace MinPHP\Base;
+
+/**
+ * 参数输入类
+ * Class Input
+ * @author pengcy123x@foxmail.com
+ * @package MinPHP\Base
+ */
 class Input
 {
     /**
      * 获取GET参数
      * @param $field                string  字段名称
-     * @param string $defaultValue  string  默认值
-     * @param null $filter          string  过滤函数名称
+     * @param string $defaultValue string  默认值
+     * @param null $filter string  过滤函数名称
      * @return string
      */
     public static function Get($field, $defaultValue = '', $filter = null)
@@ -19,8 +26,8 @@ class Input
     /**
      * 获取POST参数
      * @param $field                string  字段名称
-     * @param string $defaultValue  string  默认值
-     * @param null $filter          string  过滤函数名称
+     * @param string $defaultValue string  默认值
+     * @param null $filter string  过滤函数名称
      * @return string
      */
     public static function POST($field, $defaultValue = '', $filter = null)
@@ -33,8 +40,8 @@ class Input
     /**
      * 获取Request参数
      * @param $field                string  字段名称
-     * @param string $defaultValue  string  默认值
-     * @param null $filter          string  过滤函数名称
+     * @param string $defaultValue string  默认值
+     * @param null $filter string  过滤函数名称
      * @return string
      */
     public static function Request($field, $defaultValue = '', $filter = null)

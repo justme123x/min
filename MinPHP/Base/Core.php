@@ -1,9 +1,12 @@
 <?php
 namespace MinPHP\Base;
 
-
-use MinPHP\Driver\DataBase\PdoMysql;
-
+/**
+ * 启动类
+ * Class Core
+ * @author pengcy123x@foxmail.com
+ * @package MinPHP\Base
+ */
 class Core
 {
     public static function Start()
@@ -13,33 +16,6 @@ class Core
         self::InitSession();
         self::InitHeader();
         self::InitController();
-
-        $db = new PdoMysql($_ENV['_conf']['database']);
-        $where = array(
-//            'category_id' => 27,
-//            'groupid' => 123,
-            //'category_id'=>array(25,26,27),
-            //'category_name' => array('LIKE' => '%西安%'),
-            'category_id'=>array('>' => 1, '<' => 200)
-        );
-        $field = ['category_name','category_alias','category_keywords'];
-        $order = ['category_parent_id'=>'asc','category_id'=>'desc'];
-        $limit  = [1,3];
-
-
-        $re = $db->field($field)->where($where)->orderBy($order)->limit($limit)->find(27);
-        $data= [
-            'config_id'=>100,
-            'config_field'=>substr(md5(time()),0,-12),
-            'config_name'=>123456,
-            'config_value'=>654321,
-            'config_comment'=>time(),
-        ];
-        $re =$db->data($data)->insert();
-
-        dd($db->version());
-        dd($re,$db->getLastSql());
-        //dd($db->query('SELECT * FROM `cehui_adminsss`'));
     }
 
     /**
@@ -116,7 +92,5 @@ class Core
 
         // 开始请求
         $controllerObject->$action();
-
-        // 请求结束
     }
 }

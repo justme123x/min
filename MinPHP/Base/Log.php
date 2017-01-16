@@ -1,12 +1,18 @@
 <?php
 namespace MinPHP\Base;
+
+/**
+ * 日志类
+ * Class Log
+ * @author pengcy123x@foxmail.com
+ * @package MinPHP\Base
+ */
 class Log
 {
     public static function Write($message, $file = 'php_error.log')
     {
         $time = date('Y-m-d H:i:s', $_ENV['_time']);
-//        $ip = $_ENV['_ip'];
-        $ip = '127.0.0.1';
+        $ip = ip();
         $url = self::ToStr($_SERVER['REQUEST_URI']);
         $message = self::ToStr($message);
         self::WriteLog("$time	$ip	$url	$message	\r\n", $file);

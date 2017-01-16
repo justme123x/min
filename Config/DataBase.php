@@ -1,6 +1,9 @@
 <?php
 return [
 
+    // 数据库驱动
+    'db_driver' => 'MinPHP\Driver\DataBase\PdoMysql',
+
     // 表前缀
     'db_table_prefix' => 'web_',
 

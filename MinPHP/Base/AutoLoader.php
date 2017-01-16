@@ -1,5 +1,12 @@
 <?php
 namespace MinPHP\Base;
+
+/**
+ * 自动加载类
+ * Class AutoLoader
+ * @author pengcy123x@foxmail.com
+ * @package MinPHP\Base
+ */
 class AutoLoader
 {
     public static function AutoLoader($className)

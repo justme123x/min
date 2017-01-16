@@ -1,5 +1,12 @@
 <?php
 namespace MinPHP\Base;
+
+/**
+ * 框架异常类
+ * Class Debug
+ * @author pengcy123x@foxmail.com
+ * @package MinPHP\Base
+ */
 class Debug
 {
     /**
