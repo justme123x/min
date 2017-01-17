@@ -15,7 +15,8 @@ class Core
         self::InitEnv();
         self::InitSession();
         self::InitHeader();
-        self::InitController();
+        //self::InitController();
+        self::Router();
     }
 
     /**
@@ -36,10 +37,9 @@ class Core
      */
     private static function InitEnv()
     {
-        $_ENV['_sqls'] = array();    // debug 时使用
+        $_ENV['_sqls'] = [];    // debug 时使用
         $_ENV['_time'] = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : time();
         $_ENV['_ip'] = ip();
-        $_ENV['_sqlnum'] = 0;
         $_ENV['_conf']['session'] = include CONFIG_PATH . 'Session.php';
         $_ENV['_conf']['database'] = include CONFIG_PATH . 'DataBase.php';
     }
@@ -60,7 +60,6 @@ class Core
             $sessionHandler instanceof \SessionHandlerInterface && session_set_save_handler($sessionHandler, true);
         }
 
-
         ini_set('session.cookie_lifetime', $conf['session_lifetime']);         //cookie有效时间
         ini_set('session.gc_maxlifetime', $conf['session_lifetime']);         //session有效时间
         ini_set('session.cookie_path', $conf['session_path']);                //cookie作用域
@@ -72,7 +71,7 @@ class Core
     /**
      * 初始化请求
      */
-    private static function InitController()
+   /* private static function InitController()
     {
         $app = Input::Get('p', 'Home');
         $controller = Input::Get('c', 'Index');
@@ -92,5 +91,10 @@ class Core
 
         // 开始请求
         $controllerObject->$action();
+    }*/
+
+    private static function Router()
+    {
+        include SITE_PATH . '/Routes/web.php';
     }
 }

@@ -11,11 +11,13 @@ use App\Model\ConfigModel;
  */
 class IndexController
 {
-    public function Index()
+    public function Index($id)
     {
+        dd($id);
         $model = new ConfigModel();
         $config_list = $model->where(['config_id' => ['>' => 1]])->select();
         $title = '你好';
-        include VIEW_PATH . 'index.php';
+        include SITE_PATH.'/Views/Home/Index/index.php';
+        dd(get_included_files());
     }
 }
